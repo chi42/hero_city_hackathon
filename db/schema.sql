@@ -25,6 +25,7 @@ CREATE TABLE users (
 
 CREATE TABLE workouts(
     id bigint NOT NULL UNIQUE,
+    user_id bigint NOT NULL,
     workout character varying NOT NULL,
     date timestamp with time zone NOT NULL,
     improve boolean,
