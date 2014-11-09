@@ -1,4 +1,4 @@
-package main
+package hero_city_hackathon
 
 import (
     "fmt"
