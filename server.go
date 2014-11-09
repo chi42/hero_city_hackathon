@@ -1,9 +1,11 @@
-package hero_city_hackathon
+package main
 
 import (
+    "os"
     "fmt"
     "net/http"
     "io/ioutil"
+    "database/sql"
 )
 
 func page_h(w http.ResponseWriter, r *http.Request, page string) {
@@ -27,10 +29,16 @@ func unhandled_h(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+    var db *sql.DB
+
+    db = db_open()
+    if db == nil {
+        os.Exit(1)
+    }
+
     http.HandleFunc("/", index_h)
 
     // doesn't work
     //http.HandleFunc("*", unhandled_h)
     http.ListenAndServe(":8080", nil)
 }
-
